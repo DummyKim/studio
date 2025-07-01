@@ -23,8 +23,8 @@ const StrengthWeaknessSchema = z.object({
 
 const AnalysisDetailSchema = z.object({
     koreanAnalysis: z.string().describe('해당 분석 영역(내용, 구성, 문법, 어휘)에 대한 1-2 문장의 한국어 요약 설명. 모든 응답은 "음슴체"로 끝나야 함. 예: ~하였음, ~임.'),
-    strengths: z.array(StrengthWeaknessSchema).describe('이 영역에서 발견된 강점들 (1-3개).'),
-    weaknesses: z.array(StrengthWeaknessSchema).describe('이 영역에서 발견된 약점들 (1-3개).'),
+    strengths: z.array(StrengthWeaknessSchema).describe('이 영역에서 발견된 강점들 (최소 3개, 최대 6개).'),
+    weaknesses: z.array(StrengthWeaknessSchema).describe('이 영역에서 발견된 약점들 (최소 1개, 최대 3개).'),
 });
 
 const AnalyzeEssayOutputSchema = z.object({
@@ -49,11 +49,11 @@ const analyzeEssayPrompt = ai.definePrompt({
 
 중요 지침:
 - **문법 분석 지침:** 문법 분석 시에는 주어-동사 수일치, 시제 일치, 가정법, 부정사, 동명사, 분사구문, 관계대명사 등 구체적인 문법 항목을 언급하며 설명해야 함. 특히 강점을 분석할 때는, 어떤 문법을 효과적으로 사용하여 문장을 풍부하게 만들었는지 구체적으로 칭찬해야 함. 예를 들어, '관계대명사 'which'를 사용하여 부가적인 정보를 자연스럽게 연결하였음' 또는 '다양한 시제를 정확하게 사용하였음'과 같이 긍정적인 피드백을 중심으로 제공해야 함. 약점의 경우, '주어와 동사의 수일치에서 실수가 발견됨'과 같이 부드럽게 지적해주어야 함.
+- **강점 및 약점 개수:** 모든 분석 항목(내용, 구조, 문법, 어휘)에 대해 강점은 최소 3개에서 최대 6개, 약점은 최소 1개에서 최대 3개를 찾아 제시해야 함. 학생에게 동기 부여가 되도록 강점을 약점보다 항상 더 많이 찾아 긍정적인 피드백을 주려고 노력해야 함.
 - 최종 응답은 반드시 요청된 JSON 형식을 따라야 함.
 - 'example' 필드는 반드시 에세이에서 직접 인용한 영어 문장이어야 함.
 - 다른 모든 필드('summaryInKorean', 'koreanAnalysis', 'strengths.description', 'weaknesses.description', 'overallSummary')는 반드시 한국어 "음슴체"로 작성해야 함. (예: ~함, ~였음, ~임).
 - 강점과 약점에 대한 'example'은 'description'을 뒷받침하는 직접적인 인용문이어야 함.
-- 강점과 약점은 각각 1개에서 3개까지 찾아 제시할 수 있음. 특히 학생에게 동기 부여가 되도록 강점을 약점보다 더 많이 찾아 긍정적인 피드백을 주려고 노력해야 함.
 - 만약 특정 영역에서 강점이나 약점을 찾을 수 없다면, 빈 배열을 반환해야 함.
 
 분석할 에세이:
