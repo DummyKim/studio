@@ -8,7 +8,35 @@ import { Skeleton } from "@/components/ui/skeleton";
 import type { AnalyzeEssayOutput } from '@/ai/flows/analyze-essay';
 import { getAnalysis } from './actions';
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles } from 'lucide-react';
+
+const placeholderAnalysis: AnalyzeEssayOutput = {
+  summaryInKorean: '에세이를 제출하시면 AI가 생성한 한국어 요약이 이곳에 표시됩니다.',
+  contentAnalysis: {
+    koreanAnalysis: '에세이의 주제 명확성, 아이디어의 관련성 및 구체성에 대한 분석이 제공됩니다.',
+    strengths: '내용 구성의 강점이 여기에 표시됩니다.',
+    weaknesses: '내용 구성의 약점이 여기에 표시됩니다.',
+    example: '분석과 관련된 예시 문장이 에세이에서 인용되어 여기에 표시됩니다.'
+  },
+  structureAnalysis: {
+    koreanAnalysis: '글의 전체 구조, 문단 간의 논리적 연결성 및 전환의 효과성에 대한 분석이 제공됩니다.',
+    strengths: '구조의 강점이 여기에 표시됩니다.',
+    weaknesses: '구조의 약점이 여기에 표시됩니다.',
+    example: '분석과 관련된 예시 문장이 에세이에서 인용되어 여기에 표시됩니다.'
+  },
+  grammarAnalysis: {
+    koreanAnalysis: '문법적 정확성과 문법 구조 사용의 적절성에 대한 분석이 제공됩니다.',
+    strengths: '문법의 강점이 여기에 표시됩니다.',
+    weaknesses: '문법의 약점이 여기에 표시됩니다.',
+    example: '분석과 관련된 예시 문장이 에세이에서 인용되어 여기에 표시됩니다.'
+  },
+  vocabularyAnalysis: {
+    koreanAnalysis: '어휘의 정확성, 다양성 및 적절성에 대한 분석이 제공됩니다.',
+    strengths: '어휘의 강점이 여기에 표시됩니다.',
+    weaknesses: '어휘의 약점이 여기에 표시됩니다.',
+    example: '분석과 관련된 예시 문장이 에세이에서 인용되어 여기에 표시됩니다.'
+  },
+  overallSummary: '모든 분석 영역을 종합한 최종 요약 및 제언이 이곳에 표시됩니다.'
+};
 
 export default function Home() {
   const [analysis, setAnalysis] = useState<AnalyzeEssayOutput | null>(null);
@@ -31,6 +59,8 @@ export default function Home() {
     setIsLoading(false);
   };
 
+  const displayAnalysis = analysis || placeholderAnalysis;
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
@@ -46,9 +76,7 @@ export default function Home() {
             <EssayForm onSubmit={handleAnalysis} isLoading={isLoading} />
           </div>
           <div className="lg:col-span-3">
-            {isLoading && <LoadingSkeleton />}
-            {analysis && <AnalysisResult analysis={analysis} />}
-            {!isLoading && !analysis && <Placeholder />}
+            {isLoading ? <LoadingSkeleton /> : <AnalysisResult analysis={displayAnalysis} />}
           </div>
         </div>
       </main>
@@ -71,18 +99,4 @@ const LoadingSkeleton = () => (
         <Skeleton className="h-24 w-full" />
     </div>
   </div>
-);
-
-const Placeholder = () => (
-    <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-card/50 rounded-lg border-2 border-dashed border-border">
-        <div className="p-4 bg-accent rounded-full mb-4">
-            <Sparkles className="h-10 w-10 text-primary" />
-        </div>
-        <h3 className="mt-4 text-2xl font-headline font-semibold text-foreground">
-            분석 결과 대기 중
-        </h3>
-        <p className="mt-2 text-muted-foreground max-w-sm">
-            에세이를 제출하여 분석하면 AI 기반 피드백이 여기에 표시됩니다.
-        </p>
-    </div>
 );

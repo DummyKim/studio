@@ -24,7 +24,7 @@ const AnalysisDetailSchema = z.object({
 });
 
 const AnalyzeEssayOutputSchema = z.object({
-    summaryInKorean: z.string().describe('에세이 전체에 대한 3-5 문장의 한국어 요약.'),
+    summaryInKorean: z.string().describe('에세이 내용을 3-5 문장의 한국어러 요약.'),
     contentAnalysis: AnalysisDetailSchema.describe('에세이 내용 분석.'),
     structureAnalysis: AnalysisDetailSchema.describe('에세이 구성 분석.'),
     grammarAnalysis: AnalysisDetailSchema.describe('에세이 문법 분석.'),
