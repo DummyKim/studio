@@ -1,0 +1,25 @@
+
+{
+  "apphosting": {
+    "rootDir": "/",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log",
+      "functions"
+    ],
+    "backends": [  
+      {
+        "id": "essay-analyzer",  
+        "serviceId": "essay-analyzer",  
+        "secrets": [ 
+          {
+            "key": "GEMINI_API_KEY",  
+            "secret": "GEMINI_API_KEY" 
+          }
+        ]
+      }
+    ]
+  }
+}
