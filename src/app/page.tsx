@@ -10,52 +10,52 @@ import { getAnalysis } from './actions';
 import { useToast } from "@/hooks/use-toast";
 
 const placeholderAnalysis: AnalyzeEssayOutput = {
-  summaryInKorean: 'AI가 생성한 한국어 요약이 이곳에 표시될 예정임.',
+  summaryInKorean: 'AI가 생성한 한국어 요약이 이곳에 표시됩니다.',
   contentAnalysis: {
-    koreanAnalysis: '에세이의 주제 명확성, 아이디어의 관련성 및 구체성에 대한 분석이 이곳에 표시될 예정임.',
-    strengths: {
-      description: '내용 구성의 강점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    },
-    weaknesses: {
-      description: '내용 구성의 약점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    }
+    koreanAnalysis: '에세이의 주제 명확성, 아이디어의 관련성 및 구체성에 대한 분석이 여기에 제공됩니다.',
+    strengths: [{
+      description: '내용 구성의 강점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }],
+    weaknesses: [{
+      description: '내용 구성의 약점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }]
   },
   structureAnalysis: {
-    koreanAnalysis: '글의 전체 구조, 문단 간의 논리적 연결성 및 전환의 효과성에 대한 분석이 제공될 예정임.',
-    strengths: {
-      description: '구조의 강점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    },
-    weaknesses: {
-      description: '구조의 약점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    }
+    koreanAnalysis: '글의 전체 구조, 문단 간의 논리적 연결성 및 전환의 효과성에 대한 분석이 제공됩니다.',
+    strengths: [{
+      description: '구조의 강점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }],
+    weaknesses: [{
+      description: '구조의 약점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }]
   },
   grammarAnalysis: {
-    koreanAnalysis: '문법적 정확성과 문법 구조 사용의 적절성에 대한 분석이 제공될 예정임.',
-    strengths: {
-      description: '문법의 강점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    },
-    weaknesses: {
-      description: '문법의 약점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    }
+    koreanAnalysis: '문법적 정확성과 문법 구조 사용의 적절성에 대한 분석이 제공됩니다.',
+    strengths: [{
+      description: '문법의 강점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }],
+    weaknesses: [{
+      description: '문법의 약점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }]
   },
   vocabularyAnalysis: {
-    koreanAnalysis: '어휘의 정확성, 다양성 및 적절성에 대한 분석이 제공될 예정임.',
-    strengths: {
-      description: '어휘의 강점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    },
-    weaknesses: {
-      description: '어휘의 약점이 여기에 표시됨.',
-      example: 'An example sentence will be shown here.'
-    }
+    koreanAnalysis: '어휘의 정확성, 다양성 및 적절성에 대한 분석이 제공됩니다.',
+    strengths: [{
+      description: '어휘의 강점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }],
+    weaknesses: [{
+      description: '어휘의 약점에 대한 설명이 여기에 표시됩니다.',
+      example: '분석 후 학생의 글에서 가져온 예시 문장이 여기에 나타납니다.'
+    }]
   },
-  overallSummary: '모든 분석 영역을 종합한 최종 요약 및 제언이 여기에 표시될 예정임.'
+  overallSummary: '모든 분석 영역을 종합한 최종 요약 및 제언이 여기에 표시됩니다.'
 };
 
 

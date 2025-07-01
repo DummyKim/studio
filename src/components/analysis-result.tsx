@@ -29,13 +29,21 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
           <span>강점</span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {strengths.example && (
-          <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground">
-            <p className="whitespace-pre-wrap">{strengths.example}</p>
-          </blockquote>
+      <CardContent className="space-y-6">
+        {strengths.length > 0 ? (
+          strengths.map((strength, index) => (
+            <div key={`strength-${index}`}>
+              {strength.example && (
+                <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground mb-2">
+                  <p className="whitespace-pre-wrap">{strength.example}</p>
+                </blockquote>
+              )}
+              <p className="text-muted-foreground whitespace-pre-wrap">{strength.description}</p>
+            </div>
+          ))
+        ) : (
+          <p className="text-muted-foreground">특별한 강점이 발견되지 않았음.</p>
         )}
-        <p className="text-muted-foreground whitespace-pre-wrap">{strengths.description}</p>
       </CardContent>
     </Card>
     <Card className="bg-secondary/50">
@@ -45,13 +53,21 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
           <span>약점</span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {weaknesses.example && (
-          <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground">
-            <p className="whitespace-pre-wrap">{weaknesses.example}</p>
-          </blockquote>
+      <CardContent className="space-y-6">
+        {weaknesses.length > 0 ? (
+          weaknesses.map((weakness, index) => (
+            <div key={`weakness-${index}`}>
+              {weakness.example && (
+                <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground mb-2">
+                  <p className="whitespace-pre-wrap">{weakness.example}</p>
+                </blockquote>
+              )}
+              <p className="text-muted-foreground whitespace-pre-wrap">{weakness.description}</p>
+            </div>
+          ))
+        ) : (
+           <p className="text-muted-foreground">특별한 약점이 발견되지 않았음.</p>
         )}
-        <p className="text-muted-foreground whitespace-pre-wrap">{weaknesses.description}</p>
       </CardContent>
     </Card>
   </div>
