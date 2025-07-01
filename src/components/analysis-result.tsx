@@ -3,19 +3,30 @@
 import type { AnalyzeEssayOutput } from "@/ai/flows/analyze-essay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookText, Component, SpellCheck, BrainCircuit, CheckCircle, XCircle, Quote, Languages, FileText, MessageSquareQuote } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { BookText, Component, SpellCheck, BrainCircuit, CheckCircle, XCircle, Quote, Languages, MessageSquareQuote, HelpCircle, Lightbulb } from "lucide-react";
 
-type AnalysisResultProps = {
-  analysis: AnalyzeEssayOutput;
-};
+type AnalysisDetail = AnalyzeEssayOutput['contentAnalysis'];
 
-const AnalysisDetailCard = ({ strengths, weaknesses, example }: { strengths: string; weaknesses: string; example: string; }) => (
+const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses, example }: AnalysisDetail) => (
   <div className="space-y-4 pt-4">
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-lg font-headline">
+          <Lightbulb className="h-5 w-5 text-primary" />
+          <span>주요 피드백</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-muted-foreground">{koreanAnalysis}</p>
+      </CardContent>
+    </Card>
+
     <Card className="bg-secondary/50">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg font-headline">
           <CheckCircle className="h-5 w-5 text-green-500" />
-          <span>강점</span>
+          <span>강점 (영문)</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -26,7 +37,7 @@ const AnalysisDetailCard = ({ strengths, weaknesses, example }: { strengths: str
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg font-headline">
           <XCircle className="h-5 w-5 text-destructive" />
-          <span>약점</span>
+          <span>약점 (영문)</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -37,7 +48,7 @@ const AnalysisDetailCard = ({ strengths, weaknesses, example }: { strengths: str
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg font-headline">
           <Quote className="h-5 w-5 text-primary" />
-          <span>에세이 예시</span>
+          <span>에세이 예시 (영문)</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -49,26 +60,27 @@ const AnalysisDetailCard = ({ strengths, weaknesses, example }: { strengths: str
   </div>
 );
 
-const AnalysisResult = ({ analysis }: AnalysisResultProps) => {
+const AnalysisInfoTooltip = ({ text }: { text: React.ReactNode }) => (
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger onClick={(e) => e.preventDefault()} asChild>
+        <HelpCircle className="h-4 w-4 text-muted-foreground" />
+      </TooltipTrigger>
+      <TooltipContent className="max-w-xs">
+        {text}
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+);
+
+const AnalysisResult = ({ analysis }: { analysis: AnalyzeEssayOutput }) => {
   return (
     <div className="space-y-8">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-2xl font-headline">
-            <FileText className="h-6 w-6 text-primary" />
-            <span>간략한 요약</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">{analysis.summary}</p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-2xl font-headline">
             <Languages className="h-6 w-6 text-primary" />
-            <span>한국어 요약</span>
+            <span>우리말 요약</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -83,10 +95,26 @@ const AnalysisResult = ({ analysis }: AnalysisResultProps) => {
         <CardContent>
           <Tabs defaultValue="content" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
-              <TabsTrigger value="content"><BookText className="mr-2" />내용</TabsTrigger>
-              <TabsTrigger value="structure"><Component className="mr-2" />구조</TabsTrigger>
-              <TabsTrigger value="grammar"><SpellCheck className="mr-2" />문법</TabsTrigger>
-              <TabsTrigger value="vocabulary"><BrainCircuit className="mr-2" />어휘</TabsTrigger>
+              <TabsTrigger value="content" className="gap-1.5">
+                <BookText className="h-4 w-4" />
+                <span>내용</span>
+                <AnalysisInfoTooltip text={<><p>• 주제가 명확하게 드러나고, 관련된 아이디어가 충분히 제시되었는가?</p><p>• 아이디어가 구체적이고 설득력 있게 전개되었는가?</p></>} />
+              </TabsTrigger>
+              <TabsTrigger value="structure" className="gap-1.5">
+                <Component className="h-4 w-4" />
+                <span>구성</span>
+                <AnalysisInfoTooltip text={<><p>• 글의 전체 구조가 논리적이고 일관성 있게 짜여 있는가?</p><p>• 문단 간 연결이 자연스럽고 전환이 효과적인가?</p></>} />
+              </TabsTrigger>
+              <TabsTrigger value="grammar" className="gap-1.5">
+                <SpellCheck className="h-4 w-4" />
+                <span>문법</span>
+                <AnalysisInfoTooltip text={<><p>• 문장의 문법적 오류가 적은가?</p><p>• 의미를 전달하기 위해 정확한 문법이 사용되었는가?</p></>} />
+              </TabsTrigger>
+              <TabsTrigger value="vocabulary" className="gap-1.5">
+                <BrainCircuit className="h-4 w-4" />
+                <span>어휘</span>
+                <AnalysisInfoTooltip text={<><p>• 의미를 정확하게 전달하는 어휘가 사용되었는가?</p><p>• 단순하고 반복적인 어휘 보다는 다채로운 어휘가 사용되었는가?</p></>} />
+              </TabsTrigger>
             </TabsList>
             <TabsContent value="content">
                 <AnalysisDetailCard {...analysis.contentAnalysis} />
@@ -108,7 +136,7 @@ const AnalysisResult = ({ analysis }: AnalysisResultProps) => {
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-2xl font-headline">
             <MessageSquareQuote className="h-6 w-6 text-primary" />
-            <span>종합 요약</span>
+            <span>분석 요약</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
