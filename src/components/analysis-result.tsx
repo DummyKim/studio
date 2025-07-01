@@ -79,7 +79,7 @@ const AnalysisInfoTooltip = ({ text }: { text: React.ReactNode }) => (
       <TooltipTrigger onClick={(e) => e.preventDefault()} asChild>
         <HelpCircle className="h-4 w-4 text-muted-foreground" />
       </TooltipTrigger>
-      <TooltipContent className="max-w-xs">
+      <TooltipContent className="max-w-sm text-left">
         {text}
       </TooltipContent>
     </Tooltip>
@@ -111,22 +111,22 @@ const AnalysisResult = ({ analysis }: { analysis: AnalyzeEssayOutput }) => {
               <TabsTrigger value="content" className="gap-1.5">
                 <BookText className="h-4 w-4" />
                 <span>내용</span>
-                <AnalysisInfoTooltip text={<><p>• 주제가 명확하게 드러나고, 관련된 아이디어가 충분히 제시되었는가?</p><p>• 아이디어가 구체적이고 설득력 있게 전개되었는가?</p></>} />
+                <AnalysisInfoTooltip text={<><p>주제가 명확하게 드러나고, 관련된 아이디어가 충분히 제시되었는가?</p><p>아이디어가 구체적이고 설득력 있게 전개되었는가?</p></>} />
               </TabsTrigger>
               <TabsTrigger value="structure" className="gap-1.5">
                 <Component className="h-4 w-4" />
                 <span>구성</span>
-                <AnalysisInfoTooltip text={<><p>• 글의 전체 구조가 논리적이고 일관성 있게 짜여 있는가?</p><p>• 문단 간 연결이 자연스럽고 전환이 효과적인가?</p></>} />
+                <AnalysisInfoTooltip text={<><p>글의 전체 구조가 논리적이고 일관성 있게 짜여 있는가?</p><p>문단 간 연결이 자연스럽고 전환이 효과적인가?</p></>} />
               </TabsTrigger>
               <TabsTrigger value="grammar" className="gap-1.5">
                 <SpellCheck className="h-4 w-4" />
                 <span>문법</span>
-                <AnalysisInfoTooltip text={<><p>• 문장의 문법적 오류가 적은가?</p><p>• 의미를 전달하기 위해 정확한 문법이 사용되었는가?</p></>} />
+                <AnalysisInfoTooltip text={<><p>문장의 문법적 오류가 적은가?</p><p>의미를 전달하기 위해 정확한 문법이 사용되었는가?</p></>} />
               </TabsTrigger>
               <TabsTrigger value="vocabulary" className="gap-1.5">
                 <BrainCircuit className="h-4 w-4" />
                 <span>어휘</span>
-                <AnalysisInfoTooltip text={<><p>• 의미를 정확하게 전달하는 어휘가 사용되었는가?</p><p>• 단순하고 반복적인 어휘 보다는 다채로운 어휘가 사용되었는가?</p></>} />
+                <AnalysisInfoTooltip text={<><p>의미를 정확하게 전달하는 어휘가 사용되었는가?</p><p>단순하고 반복적인 어휘 보다는 다채로운 어휘가 사용되었는가?</p></>} />
               </TabsTrigger>
             </TabsList>
             <TabsContent value="content">
