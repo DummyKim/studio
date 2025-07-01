@@ -18,7 +18,7 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground whitespace-pre-wrap">{koreanAnalysis}</p>
+        <p className="text-foreground whitespace-pre-wrap">{koreanAnalysis}</p>
       </CardContent>
     </Card>
 
@@ -34,15 +34,15 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
           strengths.map((strength, index) => (
             <div key={`strength-${index}`}>
               {strength.example && (
-                <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground mb-2">
+                <blockquote className="border-l-4 border-border pl-4 italic text-foreground/80 mb-2">
                   <p className="whitespace-pre-wrap">{strength.example}</p>
                 </blockquote>
               )}
-              <p className="text-muted-foreground whitespace-pre-wrap">{strength.description}</p>
+              <p className="text-foreground whitespace-pre-wrap">{strength.description}</p>
             </div>
           ))
         ) : (
-          <p className="text-muted-foreground">특별한 강점이 발견되지 않았음.</p>
+          <p className="text-foreground">특별한 강점이 발견되지 않았음.</p>
         )}
       </CardContent>
     </Card>
@@ -58,15 +58,15 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
           weaknesses.map((weakness, index) => (
             <div key={`weakness-${index}`}>
               {weakness.example && (
-                <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground mb-2">
+                <blockquote className="border-l-4 border-border pl-4 italic text-foreground/80 mb-2">
                   <p className="whitespace-pre-wrap">{weakness.example}</p>
                 </blockquote>
               )}
-              <p className="text-muted-foreground whitespace-pre-wrap">{weakness.description}</p>
+              <p className="text-foreground whitespace-pre-wrap">{weakness.description}</p>
             </div>
           ))
         ) : (
-           <p className="text-muted-foreground">특별한 약점이 발견되지 않았음.</p>
+           <p className="text-foreground">특별한 약점이 발견되지 않았음.</p>
         )}
       </CardContent>
     </Card>
@@ -97,7 +97,7 @@ const AnalysisResult = ({ analysis }: { analysis: AnalyzeEssayOutput }) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground whitespace-pre-wrap">{analysis.summaryInKorean}</p>
+          <p className="text-foreground whitespace-pre-wrap">{analysis.summaryInKorean}</p>
         </CardContent>
       </Card>
 
@@ -153,7 +153,7 @@ const AnalysisResult = ({ analysis }: { analysis: AnalyzeEssayOutput }) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground whitespace-pre-wrap">{analysis.overallSummary}</p>
+          <p className="text-foreground whitespace-pre-wrap">{analysis.overallSummary}</p>
         </CardContent>
       </Card>
     </div>

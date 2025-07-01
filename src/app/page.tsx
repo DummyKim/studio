@@ -91,7 +91,7 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-headline font-bold text-primary">학생 글 입력</h2>
               <p className="text-muted-foreground">
-                학생의 글을 아래 상자에 붙여넣고 '분석' 버튼을 클릭하여 AI 기반 피드백을 받으세요.
+                학생의 글을 아래 상자에 붙여넣거나 사진 파일을 업로드한 후, '분석하기' 버튼을 클릭하여 AI 기반 피드백을 받으세요.
               </p>
             </div>
             <EssayForm onSubmit={handleAnalysis} isLoading={isLoading} />
