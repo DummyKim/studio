@@ -1,5 +1,7 @@
-# Firebase Studio
+# 영작문 분석기 AI
 
-This is a NextJS starter in Firebase Studio.
+영작문 분석기 AI 소개
 
-To get started, take a look at src/app/page.tsx.
+영작문 분석기 AI는 학생이 영작한 글을 AI가 읽고 기준에 따라 학생 글의 강점과 약점을 분석합니다.
+에세이 등 작문 과제는 학생의 영어 쓰기 능력을 판단하기에 좋지만 선생님들의 입장에서 수많은 학생들의 글을 모두 읽는데 너무나 많은 시간과 노력이 필요합니다.
+AI 분석기를 통해 선생님들이 모든 글을 읽는 시간을 줄이고 학생의 글을 일목요연하게 확인할 수 있습니다.

@@ -25,11 +25,8 @@ export default function GuidePage() {
             </Link>
           </div>
           <Card>
-            <CardHeader>
-              <CardTitle className="text-3xl font-headline">활용 방법 안내</CardTitle>
-            </CardHeader>
             <CardContent className="space-y-10 text-base md:text-lg">
-              
+              <p></p>
               <div className="space-y-4">
                 <h2 className="text-2xl font-headline font-semibold">영작문 분석기 AI 소개</h2>
                 <div className="space-y-3 text-foreground/90">
@@ -96,9 +93,14 @@ export default function GuidePage() {
                  </div>
                  <div className="space-y-2">
                     <h3 className="font-semibold text-lg">2. 생활기록부 교과 세특에 활용</h3>
-                    <p className="text-foreground/90">
-                      학생이 제출한 글의 영역별 강점과 약점을 요약하여 교과 세특 작성을 위한 자료로 활용할 수 있습니다. 학생이 직접 작성한 글을 근거로 사용하므로 개별화된 세특 작성이 가능하고 실제 학생의 능력을 기록할 수 있습니다.
-                    </p>
+                    <div className="text-foreground/90">
+                      <p>
+                        학생이 제출한 글의 영역별 강점과 약점을 요약하여 교과 세특 작성을 위한 자료로 활용할 수 있습니다. 
+                      </p>
+                      <p>
+                        학생이 직접 작성한 글을 근거로 사용하므로 개별화된 세특 작성이 가능하고 실제 학생의 능력을 기록할 수 있습니다.
+                      </p>
+                      </div>
                  </div>
               </div>
 
