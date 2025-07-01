@@ -16,7 +16,7 @@ const Header = () => {
           <Link href="/" className="flex items-center gap-3">
             <PenSquare className="h-8 w-8 text-primary" />
             <h1 className="text-2xl md:text-3xl font-headline font-bold text-foreground">
-            영작문 분석기 AI
+            English Composition Analyzer AI
             </h1>
           </Link>
           {!isGuidePage && (

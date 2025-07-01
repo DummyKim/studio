@@ -1,4 +1,4 @@
-# 영작문 분석기 AI
+# English Composition Analyzer AI
 
 영작문 분석기 AI 소개
 
