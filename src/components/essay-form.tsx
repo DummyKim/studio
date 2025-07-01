@@ -24,6 +24,14 @@ const formSchema = z.object({
     .max(10000, { message: "텍스트는 10,000자를 초과할 수 없습니다." }),
 });
 
+const exampleEssay = `The Impact of K-Culture
+
+  Korean culture, called K-culture, now has a big impact on many foreign countries. One example is the most famous K-pop. With BTS's entry into the Billboard charts, many other Korean singers have come to the attention of the world, thereby expanding Korea's presence. 
+  Also, Korean dramas called K-dramas had a great influence overseas. With the easy access to Korean dramas through platforms such as Netflix and YouTube, The consumption of Korean dramas has increased worldwide. 
+  In another example, Korean cosmetics and skin care products called K-beauty are gaining popularity in the global market, affecting many consumers. As Korean cosmetics have gained attention for their good ingredients and innovative technology, filming Korean makeup videos with Korean makeup methods and cosmetics has become popular among the younger generation, Korean beauty brands have gradually become more competitive in the global market and can find Korean cosmetics in many countries. 
+  This K-culture has a great influence worldwide in various fields.  This phenomenon is playing an important role in promoting understanding and interest in Korea in the global society beyond simple cultural consumption.
+  It is expected that the influence of K-culture will continue in the future, which will further promote exchanges between cultures. However, the more such k-culture affects overseas, the more problems such as cultural identification and commercialization of consumerism may arise. Therefore, it is necessary to recognize the disadvantages that may occur in the process. It is important to respect cultural diversity and to create a healthy consumption culture.`;
+
 type EssayFormProps = {
   onSubmit: (data: z.infer<typeof formSchema>) => void;
   isLoading: boolean;
@@ -99,6 +107,14 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
     }
   };
 
+  const handleLoadExample = () => {
+    form.setValue('essay', exampleEssay);
+    toast({
+        title: "예시 불러오기 완료",
+        description: "예시 에세이를 입력란에 채웠습니다. '분석하기' 버튼을 눌러 결과를 확인해보세요.",
+    });
+  };
+
   const totalLoading = isLoading || isOcrLoading;
 
   return (
@@ -109,6 +125,17 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
           name="essay"
           render={({ field }) => (
             <FormItem>
+              <div className="flex justify-end">
+                <Button 
+                  type="button" 
+                  variant="link" 
+                  className="p-0 h-auto text-sm" 
+                  onClick={handleLoadExample} 
+                  disabled={totalLoading}
+                >
+                  예시 보기
+                </Button>
+              </div>
               <FormLabel className="sr-only">에세이</FormLabel>
               <FormControl>
                 <Textarea
