@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'English Composition Analyzer AI',
+  title: '영작문 분석기 AI',
   description: 'AI 기반 영작문 분석기',
 };
 
