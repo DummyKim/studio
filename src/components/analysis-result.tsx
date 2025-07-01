@@ -26,7 +26,7 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses, example }: 
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg font-headline">
           <CheckCircle className="h-5 w-5 text-green-500" />
-          <span>강점 (영문)</span>
+          <span>강점</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -37,7 +37,7 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses, example }: 
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg font-headline">
           <XCircle className="h-5 w-5 text-destructive" />
-          <span>약점 (영문)</span>
+          <span>약점</span>
         </CardTitle>
       </CardHeader>
       <CardContent>

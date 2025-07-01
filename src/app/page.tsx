@@ -35,8 +35,8 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
-        <div className="grid gap-12 lg:grid-cols-3">
-          <div className="lg:col-span-1 space-y-8">
+        <div className="grid gap-12 lg:grid-cols-5">
+          <div className="lg:col-span-2 space-y-8">
             <div className="space-y-2">
               <h2 className="text-3xl font-headline font-bold text-primary">에세이 입력</h2>
               <p className="text-muted-foreground">
@@ -45,7 +45,7 @@ export default function Home() {
             </div>
             <EssayForm onSubmit={handleAnalysis} isLoading={isLoading} />
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             {isLoading && <LoadingSkeleton />}
             {analysis && <AnalysisResult analysis={analysis} />}
             {!isLoading && !analysis && <Placeholder />}
