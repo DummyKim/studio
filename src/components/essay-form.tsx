@@ -103,7 +103,7 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-8">
         <FormField
           control={form.control}
           name="essay"
@@ -123,6 +123,17 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
           )}
         />
         
+        <Button type="submit" className="w-full" disabled={totalLoading} size="lg">
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              분석 중...
+            </>
+          ) : (
+            '분석하기'
+          )}
+        </Button>
+
         <div className="relative flex py-2 items-center">
             <div className="flex-grow border-t border-border"></div>
             <span className="flex-shrink mx-4 text-muted-foreground text-sm">또는</span>
@@ -142,17 +153,6 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
                     이미지 파일에서 텍스트 추출
                 </>
             )}
-        </Button>
-
-        <Button type="submit" className="w-full" disabled={totalLoading} size="lg">
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              분석 중...
-            </>
-          ) : (
-            '분석하기'
-          )}
         </Button>
       </form>
     </Form>
