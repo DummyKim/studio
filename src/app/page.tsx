@@ -22,7 +22,7 @@ export default function Home() {
     if (error) {
       toast({
         variant: "destructive",
-        title: "Analysis Error",
+        title: "분석 오류",
         description: error,
       });
     } else {
@@ -79,10 +79,10 @@ const Placeholder = () => (
             <Sparkles className="h-10 w-10 text-primary" />
         </div>
         <h3 className="mt-4 text-2xl font-headline font-semibold text-foreground">
-            Awaiting Analysis Results
+            분석 결과 대기 중
         </h3>
         <p className="mt-2 text-muted-foreground max-w-sm">
-            Once you submit an essay for analysis, the AI-powered feedback will appear here.
+            에세이를 제출하여 분석하면 AI 기반 피드백이 여기에 표시됩니다.
         </p>
     </div>
 );

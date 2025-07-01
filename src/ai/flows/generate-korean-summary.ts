@@ -1,24 +1,24 @@
 'use server';
 
 /**
- * @fileOverview Generates a Korean summary of an essay.
+ * @fileOverview 에세이의 한국어 요약을 생성합니다.
  *
- * - generateKoreanSummary - A function that generates a Korean summary of an essay.
- * - GenerateKoreanSummaryInput - The input type for the generateKoreanSummary function.
- * - GenerateKoreanSummaryOutput - The return type for the generateKoreanSummary function.
+ * - generateKoreanSummary - 에세이의 한국어 요약을 생성하는 함수입니다.
+ * - GenerateKoreanSummaryInput - generateKoreanSummary 함수의 입력 타입입니다.
+ * - GenerateKoreanSummaryOutput - generateKoreanSummary 함수의 반환 타입입니다.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateKoreanSummaryInputSchema = z.object({
-  essay: z.string().describe('The essay to summarize.'),
+  essay: z.string().describe('요약할 에세이.'),
 });
 export type GenerateKoreanSummaryInput = z.infer<typeof GenerateKoreanSummaryInputSchema>;
 
 const GenerateKoreanSummaryOutputSchema = z.object({
-  summary: z.string().describe('The Korean summary of the essay.'),
-  progress: z.string().describe('Progress of the summary generation.'),
+  summary: z.string().describe('에세이의 한국어 요약.'),
+  progress: z.string().describe('요약 생성 진행 상황.'),
 });
 export type GenerateKoreanSummaryOutput = z.infer<typeof GenerateKoreanSummaryOutputSchema>;
 
@@ -30,7 +30,7 @@ const prompt = ai.definePrompt({
   name: 'generateKoreanSummaryPrompt',
   input: {schema: GenerateKoreanSummaryInputSchema},
   output: {schema: GenerateKoreanSummaryOutputSchema},
-  prompt: `Please provide a Korean summary of the following essay in 3-5 sentences:\n\n{{essay}}`,
+  prompt: `다음 에세이를 3-5 문장으로 한국어로 요약해 주세요:\n\n{{essay}}`,
 });
 
 const generateKoreanSummaryFlow = ai.defineFlow(
@@ -43,7 +43,7 @@ const generateKoreanSummaryFlow = ai.defineFlow(
     const {output} = await prompt(input);
     return {
       ...output!,
-      progress: 'Generated a Korean summary of the essay.',
+      progress: '에세이의 한국어 요약을 생성했습니다.',
     };
   }
 );

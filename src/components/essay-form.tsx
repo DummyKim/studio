@@ -42,7 +42,7 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
           name="essay"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="sr-only">Essay</FormLabel>
+              <FormLabel className="sr-only">에세이</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="여기에 학생 에세이를 붙여넣으세요..."
@@ -59,7 +59,7 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Analyzing...
+              분석 중...
             </>
           ) : (
             '분석하기'

@@ -1,23 +1,23 @@
 'use server';
 
 /**
- * @fileOverview A flow to generate an overall summary of the essay analysis.
+ * @fileOverview 에세이 분석의 종합 요약을 생성하는 플로우입니다.
  *
- * - generateOverallSummary - A function that generates the overall summary.
- * - GenerateOverallSummaryInput - The input type for the generateOverallSummary function.
- * - GenerateOverallSummaryOutput - The return type for the generateOverallSummary function.
+ * - generateOverallSummary - 종합 요약을 생성하는 함수입니다.
+ * - GenerateOverallSummaryInput - generateOverallSummary 함수의 입력 타입입니다.
+ * - GenerateOverallSummaryOutput - generateOverallSummary 함수의 반환 타입입니다.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateOverallSummaryInputSchema = z.object({
-  summary: z.string().describe('Summaries of content, structure, grammar, and vocabulary analysis.'),
+  summary: z.string().describe('내용, 구조, 문법, 어휘 분석 요약.'),
 });
 export type GenerateOverallSummaryInput = z.infer<typeof GenerateOverallSummaryInputSchema>;
 
 const GenerateOverallSummaryOutputSchema = z.object({
-  overallSummary: z.string().describe('An overall summary of the essay analysis.'),
+  overallSummary: z.string().describe('에세이 분석의 종합 요약.'),
 });
 export type GenerateOverallSummaryOutput = z.infer<typeof GenerateOverallSummaryOutputSchema>;
 
@@ -29,9 +29,9 @@ const prompt = ai.definePrompt({
   name: 'generateOverallSummaryPrompt',
   input: {schema: GenerateOverallSummaryInputSchema},
   output: {schema: GenerateOverallSummaryOutputSchema},
-  prompt: `You are an expert essay analyzer who can provide an overall summary of the essay analysis.
+  prompt: `당신은 에세이 분석의 종합 요약을 제공할 수 있는 전문 에세이 분석가입니다.
 
-  Please provide a 4-6 sentence overall summary based on the following summaries of the content, structure, grammar, and vocabulary analysis:
+  다음 내용, 구조, 문법, 어휘 분석 요약을 바탕으로 4-6 문장의 종합 요약을 제공해주세요:
 
   {{{summary}}}
   `,

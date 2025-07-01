@@ -1,45 +1,45 @@
 // src/ai/flows/analyze-essay.ts
 'use server';
 /**
- * @fileOverview Analyzes an essay based on pre-defined criteria.
+ * @fileOverview 에세이를 미리 정의된 기준에 따라 분석합니다.
  *
- * - analyzeEssay - A function that handles the essay analysis process.
- * - AnalyzeEssayInput - The input type for the analyzeEssay function.
- * - AnalyzeEssayOutput - The return type for the analyzeEssay function.
+ * - analyzeEssay - 에세이 분석 프로세스를 처리하는 함수입니다.
+ * - AnalyzeEssayInput - analyzeEssay 함수의 입력 타입입니다.
+ * - AnalyzeEssayOutput - analyzeEssay 함수의 반환 타입입니다.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const AnalyzeEssayInputSchema = z.object({
-  essay: z.string().describe('The essay to be analyzed.'),
+  essay: z.string().describe('분석할 에세이.'),
 });
 export type AnalyzeEssayInput = z.infer<typeof AnalyzeEssayInputSchema>;
 
 const AnalyzeEssayOutputSchema = z.object({
-  summary: z.string().describe('A brief summary of the essay.'),
+  summary: z.string().describe('에세이에 대한 간략한 요약.'),
   contentAnalysis: z.object({
-    strengths: z.string().describe('Strengths of the essay content.'),
-    weaknesses: z.string().describe('Weaknesses of the essay content.'),
-    example: z.string().describe('An example sentence from the essay related to the content analysis.'),
-  }).describe('Detailed analysis of the essay content.'),
+    strengths: z.string().describe('에세이 내용의 강점.'),
+    weaknesses: z.string().describe('에세이 내용의 약점.'),
+    example: z.string().describe('내용 분석과 관련된 에세이의 예시 문장.'),
+  }).describe('에세이 내용에 대한 상세 분석.'),
   structureAnalysis: z.object({
-    strengths: z.string().describe('Strengths of the essay structure.'),
-    weaknesses: z.string().describe('Weaknesses of the essay structure.'),
-    example: z.string().describe('An example sentence from the essay related to the structure analysis.'),
-  }).describe('Detailed analysis of the essay structure.'),
+    strengths: z.string().describe('에세이 구조의 강점.'),
+    weaknesses: z.string().describe('에세이 구조의 약점.'),
+    example: z.string().describe('구조 분석과 관련된 에세이의 예시 문장.'),
+  }).describe('에세이 구조에 대한 상세 분석.'),
   grammarAnalysis: z.object({
-    strengths: z.string().describe('Strengths of the essay grammar.'),
-    weaknesses: z.string().describe('Weaknesses of the essay grammar.'),
-    example: z.string().describe('An example sentence from the essay related to the grammar analysis.'),
-  }).describe('Detailed analysis of the essay grammar.'),
+    strengths: z.string().describe('에세이 문법의 강점.'),
+    weaknesses: z.string().describe('에세이 문법의 약점.'),
+    example: z.string().describe('문법 분석과 관련된 에세이의 예시 문장.'),
+  }).describe('에세이 문법에 대한 상세 분석.'),
   vocabularyAnalysis: z.object({
-    strengths: z.string().describe('Strengths of the essay vocabulary.'),
-    weaknesses: z.string().describe('Weaknesses of the essay vocabulary.'),
-    example: z.string().describe('An example sentence from the essay related to the vocabulary analysis.'),
-  }).describe('Detailed analysis of the essay vocabulary.'),
-  overallSummary: z.string().describe('An overall summary of the essay analysis.'),
-  summaryInKorean: z.string().describe('A summary of the essay in Korean.'),
+    strengths: z.string().describe('에세이 어휘의 강점.'),
+    weaknesses: z.string().describe('에세이 어휘의 약점.'),
+    example: z.string().describe('어휘 분석과 관련된 에세이의 예시 문장.'),
+  }).describe('에세이 어휘에 대한 상세 분석.'),
+  overallSummary: z.string().describe('에세이 분석에 대한 종합 요약.'),
+  summaryInKorean: z.string().describe('에세이에 대한 한국어 요약.'),
 });
 export type AnalyzeEssayOutput = z.infer<typeof AnalyzeEssayOutputSchema>;
 
@@ -51,18 +51,18 @@ const analyzeEssayPrompt = ai.definePrompt({
   name: 'analyzeEssayPrompt',
   input: {schema: AnalyzeEssayInputSchema},
   output: {schema: AnalyzeEssayOutputSchema},
-  prompt: `You are an expert essay grader. Analyze the following essay based on the criteria of content, structure, grammar, and vocabulary.
+  prompt: `당신은 전문적인 에세이 평가관입니다. 내용, 구조, 문법, 어휘 기준에 따라 다음 에세이를 분석해주세요.
 
-Essay:
+에세이:
 {{{essay}}}
 
-Provide a summary, detailed analysis of each criteria (strengths, weaknesses and an example sentence from the essay), an overall summary, and a summary in Korean.
+간략한 요약, 각 기준(강점, 약점, 에세이의 예시 문장)에 대한 상세 분석, 종합 요약, 그리고 한국어 요약을 제공해주세요.
 
-Make sure to include example sentences from the original essay.
+원본 에세이의 예시 문장을 반드시 포함해주세요.
 
-Ensure that the summary in Korean is in Korean.
+한국어 요약은 반드시 한국어로 작성해주세요.
 
-Output in JSON format.
+JSON 형식으로 출력해주세요.
 
 {{output}}`,
 });
