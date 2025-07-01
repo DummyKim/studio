@@ -10,53 +10,54 @@ import { getAnalysis } from './actions';
 import { useToast } from "@/hooks/use-toast";
 
 const placeholderAnalysis: AnalyzeEssayOutput = {
-  summaryInKorean: '에세이를 제출하시면 AI가 생성한 한국어 요약이 이곳에 표시됨.',
+  summaryInKorean: 'AI가 생성한 한국어 요약이 이곳에 표시될 예정임.',
   contentAnalysis: {
-    koreanAnalysis: '에세이의 주제 명확성, 아이디어의 관련성 및 구체성에 대한 분석이 제공될 것임.',
+    koreanAnalysis: '에세이의 주제 명확성, 아이디어의 관련성 및 구체성에 대한 분석이 이곳에 표시될 예정임.',
     strengths: {
-      description: '내용 구성의 강점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '내용 구성의 강점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     },
     weaknesses: {
-      description: '내용 구성의 약점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '내용 구성의 약점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     }
   },
   structureAnalysis: {
-    koreanAnalysis: '글의 전체 구조, 문단 간의 논리적 연결성 및 전환의 효과성에 대한 분석이 제공될 것임.',
+    koreanAnalysis: '글의 전체 구조, 문단 간의 논리적 연결성 및 전환의 효과성에 대한 분석이 제공될 예정임.',
     strengths: {
-      description: '구조의 강점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '구조의 강점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     },
     weaknesses: {
-      description: '구조의 약점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '구조의 약점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     }
   },
   grammarAnalysis: {
-    koreanAnalysis: '문법적 정확성과 문법 구조 사용의 적절성에 대한 분석이 제공될 것임.',
+    koreanAnalysis: '문법적 정확성과 문법 구조 사용의 적절성에 대한 분석이 제공될 예정임.',
     strengths: {
-      description: '문법의 강점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '문법의 강점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     },
     weaknesses: {
-      description: '문법의 약점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '문법의 약점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     }
   },
   vocabularyAnalysis: {
-    koreanAnalysis: '어휘의 정확성, 다양성 및 적절성에 대한 분석이 제공될 것임.',
+    koreanAnalysis: '어휘의 정확성, 다양성 및 적절성에 대한 분석이 제공될 예정임.',
     strengths: {
-      description: '어휘의 강점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '어휘의 강점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     },
     weaknesses: {
-      description: '어휘의 약점이 여기에 한국어로 표시될 것임.',
-      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+      description: '어휘의 약점이 여기에 표시됨.',
+      example: 'An example sentence will be shown here.'
     }
   },
-  overallSummary: '모든 분석 영역을 종합한 최종 요약 및 제언이 이곳에 표시될 것임.'
+  overallSummary: '모든 분석 영역을 종합한 최종 요약 및 제언이 여기에 표시될 예정임.'
 };
+
 
 export default function Home() {
   const [analysis, setAnalysis] = useState<AnalyzeEssayOutput | null>(null);
@@ -88,9 +89,9 @@ export default function Home() {
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-2">
-              <h2 className="text-3xl font-headline font-bold text-primary">에세이 입력</h2>
+              <h2 className="text-3xl font-headline font-bold text-primary">학생 글 입력</h2>
               <p className="text-muted-foreground">
-                학생의 에세이를 아래 상자에 붙여넣고 '분석' 버튼을 클릭하여 AI 기반 피드백을 받으세요.
+                학생의 글을 아래 상자에 붙여넣고 '분석' 버튼을 클릭하여 AI 기반 피드백을 받으세요.
               </p>
             </div>
             <EssayForm onSubmit={handleAnalysis} isLoading={isLoading} />

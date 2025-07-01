@@ -17,8 +17,8 @@ import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   essay: z.string()
-    .min(50, { message: "에세이는 50자 이상이어야 합니다." })
-    .max(10000, { message: "에세이는 10,000자를 초과할 수 없습니다." }),
+    .min(50, { message: "텍스트는 50자 이상이어야 합니다." })
+    .max(10000, { message: "텍스트는 10,000자를 초과할 수 없습니다." }),
 });
 
 type EssayFormProps = {
@@ -45,7 +45,7 @@ const EssayForm = ({ onSubmit, isLoading }: EssayFormProps) => {
               <FormLabel className="sr-only">에세이</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="여기에 학생 에세이를 붙여넣으세요..."
+                  placeholder="여기에 학생이 작성한 글을 붙여넣으세요..."
                   className="min-h-[300px] text-base"
                   disabled={isLoading}
                   {...field}
