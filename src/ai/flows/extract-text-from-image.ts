@@ -31,7 +31,7 @@ export async function extractTextFromImage(input: ExtractTextFromImageInput): Pr
 
 const ocrPrompt = ai.definePrompt({
   name: 'ocrPrompt',
-  model: 'googleai/gemini-pro-vision', // Specify the vision-capable model
+  model: 'googleai/gemini-1.5-flash', // Specify the vision-capable model
   input: {schema: ExtractTextFromImageInputSchema},
   output: {schema: ExtractTextFromImageOutputSchema},
   prompt: `Please extract any text you can find in the following image. The image is a student's essay, which might be handwritten or typed. Transcribe it as accurately as possible. Preserve the original line breaks and formatting. Return only the extracted text.
