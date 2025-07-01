@@ -4,11 +4,11 @@ import type { AnalyzeEssayOutput } from "@/ai/flows/analyze-essay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { BookText, Component, SpellCheck, BrainCircuit, CheckCircle, XCircle, Quote, Languages, MessageSquareQuote, HelpCircle, Lightbulb } from "lucide-react";
+import { BookText, Component, SpellCheck, BrainCircuit, CheckCircle, XCircle, Languages, MessageSquareQuote, HelpCircle, Lightbulb } from "lucide-react";
 
 type AnalysisDetail = AnalyzeEssayOutput['contentAnalysis'];
 
-const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses, example }: AnalysisDetail) => (
+const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisDetail) => (
   <div className="space-y-4 pt-4">
     <Card>
       <CardHeader>
@@ -30,7 +30,7 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses, example }: 
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">{strengths}</p>
+        <p className="text-muted-foreground whitespace-pre-wrap">{strengths}</p>
       </CardContent>
     </Card>
     <Card className="bg-secondary/50">
@@ -41,20 +41,7 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses, example }: 
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">{weaknesses}</p>
-      </CardContent>
-    </Card>
-    <Card className="bg-secondary/50">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg font-headline">
-          <Quote className="h-5 w-5 text-primary" />
-          <span>에세이 예시 (영문)</span>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground">
-          {example}
-        </blockquote>
+        <p className="text-muted-foreground whitespace-pre-wrap">{weaknesses}</p>
       </CardContent>
     </Card>
   </div>

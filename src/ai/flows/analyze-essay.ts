@@ -18,9 +18,8 @@ export type AnalyzeEssayInput = z.infer<typeof AnalyzeEssayInputSchema>;
 
 const AnalysisDetailSchema = z.object({
     koreanAnalysis: z.string().describe('해당 분석 영역(내용, 구성, 문법, 어휘)에 대한 1-2 문장의 한국어 요약 설명.'),
-    strengths: z.string().describe('이 영역에서 발견된 강점 (한국어로 작성).'),
-    weaknesses: z.string().describe('이 영역에서 발견된 약점 (한국어로 작성).'),
-    example: z.string().describe('An example sentence from the original essay that illustrates a point from the analysis, written in English.'),
+    strengths: z.string().describe('이 영역에서 발견된 강점 (한국어로 작성). 분석을 뒷받침하는 에세이의 예시 문장(영어)을 포함해야 합니다.'),
+    weaknesses: z.string().describe('이 영역에서 발견된 약점 (한국어로 작성). 분석을 뒷받침하는 에세이의 예시 문장(영어)을 포함해야 합니다.'),
 });
 
 const AnalyzeEssayOutputSchema = z.object({
@@ -45,9 +44,8 @@ const analyzeEssayPrompt = ai.definePrompt({
 Your response MUST be in the requested JSON format.
 
 IMPORTANT INSTRUCTIONS:
-- The 'example' field MUST be written in ENGLISH.
-- All other fields ('summaryInKorean', 'koreanAnalysis', 'strengths', 'weaknesses', 'overallSummary') MUST be written in KOREAN.
-- The 'example' field must contain a direct quote from the essay.
+- The 'strengths' and 'weaknesses' fields must contain analysis in KOREAN, followed by a relevant example sentence quoted directly from the essay in ENGLISH.
+- All other fields ('summaryInKorean', 'koreanAnalysis', 'overallSummary') MUST be written in KOREAN.
 
 Essay to analyze:
 {{{essay}}}`,
