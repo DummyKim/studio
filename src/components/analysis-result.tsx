@@ -107,7 +107,7 @@ const AnalysisResult = ({ analysis }: { analysis: AnalyzeEssayOutput }) => {
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="content" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
+            <TabsList className="grid h-auto w-full grid-cols-2 gap-2 md:grid-cols-4">
               <TabsTrigger value="content" className="gap-1.5">
                 <BookText className="h-4 w-4" />
                 <span>내용</span>
