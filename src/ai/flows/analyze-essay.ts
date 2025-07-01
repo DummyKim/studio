@@ -45,14 +45,14 @@ const analyzeEssayPrompt = ai.definePrompt({
   name: 'analyzeEssayPrompt',
   input: {schema: AnalyzeEssayInputSchema},
   output: {schema: AnalyzeEssayOutputSchema},
-  prompt: `당신은 한국인 교사를 위한 전문 에세이 평가관임. 내용, 구조, 문법, 어휘를 바탕으로 다음 에세이를 분석해야 함.
+  prompt: `당신은 한국인 교사를 위한 전문 에세이 평가관임. 내용, 구조, 문법, 어휘를 바탕으로 다음 에세이를 분석해야 함. 이 평가는 영어가 아직 익숙하지 않은 한국 학생들을 대상으로 하므로, 평가는 관대하게 하고 학생들에게 동기를 부여하기 위해 강점을 찾는 데 집중해야 함.
 
 중요 지침:
 - 최종 응답은 반드시 요청된 JSON 형식을 따라야 함.
 - 'example' 필드는 반드시 에세이에서 직접 인용한 영어 문장이어야 함.
 - 다른 모든 필드('summaryInKorean', 'koreanAnalysis', 'strengths.description', 'weaknesses.description', 'overallSummary')는 반드시 한국어 "음슴체"로 작성해야 함. (예: ~함, ~였음, ~임).
 - 강점과 약점에 대한 'example'은 'description'을 뒷받침하는 직접적인 인용문이어야 함.
-- 강점과 약점은 각각 1개에서 3개까지 찾아 제시할 수 있음. 특히 학생에게 동기 부여가 되도록 강점을 더 많이 찾아 긍정적인 피드백을 주려고 노력해야 함.
+- 강점과 약점은 각각 1개에서 3개까지 찾아 제시할 수 있음. 특히 학생에게 동기 부여가 되도록 강점을 약점보다 더 많이 찾아 긍정적인 피드백을 주려고 노력해야 함.
 - 만약 특정 영역에서 강점이나 약점을 찾을 수 없다면, 빈 배열을 반환해야 함.
 
 분석할 에세이:
