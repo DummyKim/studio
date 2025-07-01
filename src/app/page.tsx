@@ -10,28 +10,52 @@ import { getAnalysis } from './actions';
 import { useToast } from "@/hooks/use-toast";
 
 const placeholderAnalysis: AnalyzeEssayOutput = {
-  summaryInKorean: '에세이를 제출하시면 AI가 생성한 한국어 요약이 이곳에 표시됩니다.',
+  summaryInKorean: '에세이를 제출하시면 AI가 생성한 한국어 요약이 이곳에 표시됨.',
   contentAnalysis: {
-    koreanAnalysis: '에세이의 주제 명확성, 아이디어의 관련성 및 구체성에 대한 분석이 제공됩니다.',
-    strengths: '내용 구성의 강점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.',
-    weaknesses: '내용 구성의 약점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.'
+    koreanAnalysis: '에세이의 주제 명확성, 아이디어의 관련성 및 구체성에 대한 분석이 제공될 것임.',
+    strengths: {
+      description: '내용 구성의 강점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    },
+    weaknesses: {
+      description: '내용 구성의 약점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    }
   },
   structureAnalysis: {
-    koreanAnalysis: '글의 전체 구조, 문단 간의 논리적 연결성 및 전환의 효과성에 대한 분석이 제공됩니다.',
-    strengths: '구조의 강점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.',
-    weaknesses: '구조의 약점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.'
+    koreanAnalysis: '글의 전체 구조, 문단 간의 논리적 연결성 및 전환의 효과성에 대한 분석이 제공될 것임.',
+    strengths: {
+      description: '구조의 강점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    },
+    weaknesses: {
+      description: '구조의 약점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    }
   },
   grammarAnalysis: {
-    koreanAnalysis: '문법적 정확성과 문법 구조 사용의 적절성에 대한 분석이 제공됩니다.',
-    strengths: '문법의 강점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.',
-    weaknesses: '문법의 약점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.'
+    koreanAnalysis: '문법적 정확성과 문법 구조 사용의 적절성에 대한 분석이 제공될 것임.',
+    strengths: {
+      description: '문법의 강점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    },
+    weaknesses: {
+      description: '문법의 약점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    }
   },
   vocabularyAnalysis: {
-    koreanAnalysis: '어휘의 정확성, 다양성 및 적절성에 대한 분석이 제공됩니다.',
-    strengths: '어휘의 강점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.',
-    weaknesses: '어휘의 약점이 여기에 한국어로 표시됩니다. 분석을 뒷받침하는 관련 예시(영문)가 함께 제공됩니다.'
+    koreanAnalysis: '어휘의 정확성, 다양성 및 적절성에 대한 분석이 제공될 것임.',
+    strengths: {
+      description: '어휘의 강점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    },
+    weaknesses: {
+      description: '어휘의 약점이 여기에 한국어로 표시될 것임.',
+      example: 'A relevant example sentence from the essay will be displayed here to support the analysis.'
+    }
   },
-  overallSummary: '모든 분석 영역을 종합한 최종 요약 및 제언이 이곳에 표시됩니다.'
+  overallSummary: '모든 분석 영역을 종합한 최종 요약 및 제언이 이곳에 표시될 것임.'
 };
 
 export default function Home() {

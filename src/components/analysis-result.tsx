@@ -18,7 +18,7 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">{koreanAnalysis}</p>
+        <p className="text-muted-foreground whitespace-pre-wrap">{koreanAnalysis}</p>
       </CardContent>
     </Card>
 
@@ -29,8 +29,13 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
           <span>강점</span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground whitespace-pre-wrap">{strengths}</p>
+      <CardContent className="space-y-4">
+        {strengths.example && (
+          <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground">
+            <p className="whitespace-pre-wrap">{strengths.example}</p>
+          </blockquote>
+        )}
+        <p className="text-muted-foreground whitespace-pre-wrap">{strengths.description}</p>
       </CardContent>
     </Card>
     <Card className="bg-secondary/50">
@@ -40,8 +45,13 @@ const AnalysisDetailCard = ({ koreanAnalysis, strengths, weaknesses }: AnalysisD
           <span>약점</span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground whitespace-pre-wrap">{weaknesses}</p>
+      <CardContent className="space-y-4">
+        {weaknesses.example && (
+          <blockquote className="border-l-4 border-border pl-4 italic text-muted-foreground">
+            <p className="whitespace-pre-wrap">{weaknesses.example}</p>
+          </blockquote>
+        )}
+        <p className="text-muted-foreground whitespace-pre-wrap">{weaknesses.description}</p>
       </CardContent>
     </Card>
   </div>
@@ -71,7 +81,7 @@ const AnalysisResult = ({ analysis }: { analysis: AnalyzeEssayOutput }) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground">{analysis.summaryInKorean}</p>
+          <p className="text-muted-foreground whitespace-pre-wrap">{analysis.summaryInKorean}</p>
         </CardContent>
       </Card>
 
@@ -127,7 +137,7 @@ const AnalysisResult = ({ analysis }: { analysis: AnalyzeEssayOutput }) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground">{analysis.overallSummary}</p>
+          <p className="text-muted-foreground whitespace-pre-wrap">{analysis.overallSummary}</p>
         </CardContent>
       </Card>
     </div>
