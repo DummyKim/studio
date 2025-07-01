@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: '영작문 분석기 AI',
   description: 'AI 기반 영작문 분석기',
-  icons: null,
 };
 
 export default function RootLayout({
